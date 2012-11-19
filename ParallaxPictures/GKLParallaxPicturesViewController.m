@@ -27,14 +27,8 @@ static CGFloat PageControlHeight = 20.0f;
         _imageScroller.showsVerticalScrollIndicator     = NO;
         _imageScroller.pagingEnabled                    = YES;
         
-        NSMutableArray *imageViews = [NSMutableArray arrayWithCapacity:[images count]];
-        for (UIImage *image in images) {
-            UIImageView *imageView  = [[UIImageView alloc] initWithImage:image];
-            [imageView setContentMode:UIViewContentModeScaleAspectFill];
-            [imageViews addObject:imageView];
-            [_imageScroller addSubview:imageView];
-        }
-        _imageViews = imageViews;
+        _imageViews = [NSMutableArray arrayWithCapacity:[images count]];
+        [self addImages:images];
         
         _transparentScroller = [[UIScrollView alloc] initWithFrame:CGRectZero];
         _transparentScroller.backgroundColor                = [UIColor clearColor];
@@ -67,8 +61,21 @@ static CGFloat PageControlHeight = 20.0f;
     CGFloat imageYOffset = floorf((WindowHeight  - ImageHeight) / 2.0);
     CGFloat imageXOffset = [_imageViews count] * imageWidth;
     
-    for (UIImage *image in moreImages) {
-        UIImageView *imageView  = [[UIImageView alloc] initWithImage:image];
+    for (id image in moreImages) {
+        UIImageView *imageView  = [[UIImageView alloc] init];
+        if ([image isKindOfClass:[UIImage class]]) {
+            [imageView setImage:image];
+            //                allow users to submit URLs
+        } else if ([image isKindOfClass:[NSString class]]){
+            dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul);
+            dispatch_async(queue, ^{
+                NSData *imageData = [[NSData alloc] initWithContentsOfURL:[NSURL URLWithString:(NSString*)image]];
+                dispatch_sync(dispatch_get_main_queue(), ^{
+                    UIImage *downloadedImage = [[UIImage alloc] initWithData:imageData];
+                    [imageView setImage:downloadedImage];
+                });
+            });
+        }
         imageView.frame = CGRectMake(imageXOffset, imageYOffset, imageWidth, ImageHeight);
         imageXOffset   += imageWidth;
         [imageView setContentMode:UIViewContentModeScaleAspectFill];
@@ -78,7 +85,9 @@ static CGFloat PageControlHeight = 20.0f;
     [_pageControl setNumberOfPages:[_imageViews count]];
     _imageScroller.contentSize = CGSizeMake([_imageViews count]*imageWidth, self.view.bounds.size.height);
     
-    _transparentScroller.contentSize = CGSizeMake([_imageViews count]*imageWidth, WindowHeight);}
+    _transparentScroller.contentSize = CGSizeMake([_imageViews count]*imageWidth, WindowHeight);
+    [self layoutImages];
+}
 
 #pragma mark - Parallax effect
 
