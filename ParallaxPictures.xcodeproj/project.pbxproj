@@ -1,0 +1,299 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		D8778E5C165A835800FEEED8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8778E5B165A835800FEEED8 /* UIKit.framework */; };
+		D8778E5E165A835800FEEED8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8778E5D165A835800FEEED8 /* Foundation.framework */; };
+		D8778E60165A835800FEEED8 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8778E5F165A835800FEEED8 /* CoreGraphics.framework */; };
+		D8778E66165A835800FEEED8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D8778E64165A835800FEEED8 /* InfoPlist.strings */; };
+		D8778E68165A835800FEEED8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D8778E67165A835800FEEED8 /* main.m */; };
+		D8778E6C165A835800FEEED8 /* GKLAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D8778E6B165A835800FEEED8 /* GKLAppDelegate.m */; };
+		D8778E6E165A835800FEEED8 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = D8778E6D165A835800FEEED8 /* Default.png */; };
+		D8778E70165A835800FEEED8 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D8778E6F165A835800FEEED8 /* Default@2x.png */; };
+		D8778E72165A835800FEEED8 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D8778E71165A835800FEEED8 /* Default-568h@2x.png */; };
+		D8778E75165A835800FEEED8 /* GKLViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8778E74165A835800FEEED8 /* GKLViewController.m */; };
+		D8778E78165A835800FEEED8 /* GKLViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8778E76165A835800FEEED8 /* GKLViewController.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		D8778E57165A835800FEEED8 /* ParallaxPictures.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ParallaxPictures.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D8778E5B165A835800FEEED8 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		D8778E5D165A835800FEEED8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		D8778E5F165A835800FEEED8 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		D8778E63165A835800FEEED8 /* ParallaxPictures-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ParallaxPictures-Info.plist"; sourceTree = "<group>"; };
+		D8778E65165A835800FEEED8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		D8778E67165A835800FEEED8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		D8778E69165A835800FEEED8 /* ParallaxPictures-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ParallaxPictures-Prefix.pch"; sourceTree = "<group>"; };
+		D8778E6A165A835800FEEED8 /* GKLAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GKLAppDelegate.h; sourceTree = "<group>"; };
+		D8778E6B165A835800FEEED8 /* GKLAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GKLAppDelegate.m; sourceTree = "<group>"; };
+		D8778E6D165A835800FEEED8 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		D8778E6F165A835800FEEED8 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		D8778E71165A835800FEEED8 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		D8778E73165A835800FEEED8 /* GKLViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GKLViewController.h; sourceTree = "<group>"; };
+		D8778E74165A835800FEEED8 /* GKLViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GKLViewController.m; sourceTree = "<group>"; };
+		D8778E77165A835800FEEED8 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/GKLViewController.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D8778E54165A835800FEEED8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D8778E5C165A835800FEEED8 /* UIKit.framework in Frameworks */,
+				D8778E5E165A835800FEEED8 /* Foundation.framework in Frameworks */,
+				D8778E60165A835800FEEED8 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		D8778E4C165A835800FEEED8 = {
+			isa = PBXGroup;
+			children = (
+				D8778E61165A835800FEEED8 /* ParallaxPictures */,
+				D8778E5A165A835800FEEED8 /* Frameworks */,
+				D8778E58165A835800FEEED8 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		D8778E58165A835800FEEED8 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D8778E57165A835800FEEED8 /* ParallaxPictures.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D8778E5A165A835800FEEED8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D8778E5B165A835800FEEED8 /* UIKit.framework */,
+				D8778E5D165A835800FEEED8 /* Foundation.framework */,
+				D8778E5F165A835800FEEED8 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D8778E61165A835800FEEED8 /* ParallaxPictures */ = {
+			isa = PBXGroup;
+			children = (
+				D8778E6A165A835800FEEED8 /* GKLAppDelegate.h */,
+				D8778E6B165A835800FEEED8 /* GKLAppDelegate.m */,
+				D8778E73165A835800FEEED8 /* GKLViewController.h */,
+				D8778E74165A835800FEEED8 /* GKLViewController.m */,
+				D8778E76165A835800FEEED8 /* GKLViewController.xib */,
+				D8778E62165A835800FEEED8 /* Supporting Files */,
+			);
+			path = ParallaxPictures;
+			sourceTree = "<group>";
+		};
+		D8778E62165A835800FEEED8 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D8778E63165A835800FEEED8 /* ParallaxPictures-Info.plist */,
+				D8778E64165A835800FEEED8 /* InfoPlist.strings */,
+				D8778E67165A835800FEEED8 /* main.m */,
+				D8778E69165A835800FEEED8 /* ParallaxPictures-Prefix.pch */,
+				D8778E6D165A835800FEEED8 /* Default.png */,
+				D8778E6F165A835800FEEED8 /* Default@2x.png */,
+				D8778E71165A835800FEEED8 /* Default-568h@2x.png */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D8778E56165A835800FEEED8 /* ParallaxPictures */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D8778E7B165A835800FEEED8 /* Build configuration list for PBXNativeTarget "ParallaxPictures" */;
+			buildPhases = (
+				D8778E53165A835800FEEED8 /* Sources */,
+				D8778E54165A835800FEEED8 /* Frameworks */,
+				D8778E55165A835800FEEED8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ParallaxPictures;
+			productName = ParallaxPictures;
+			productReference = D8778E57165A835800FEEED8 /* ParallaxPictures.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D8778E4E165A835800FEEED8 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = GKL;
+				LastUpgradeCheck = 0450;
+				ORGANIZATIONNAME = "GoKart Labs";
+			};
+			buildConfigurationList = D8778E51165A835800FEEED8 /* Build configuration list for PBXProject "ParallaxPictures" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = D8778E4C165A835800FEEED8;
+			productRefGroup = D8778E58165A835800FEEED8 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D8778E56165A835800FEEED8 /* ParallaxPictures */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D8778E55165A835800FEEED8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D8778E66165A835800FEEED8 /* InfoPlist.strings in Resources */,
+				D8778E6E165A835800FEEED8 /* Default.png in Resources */,
+				D8778E70165A835800FEEED8 /* Default@2x.png in Resources */,
+				D8778E72165A835800FEEED8 /* Default-568h@2x.png in Resources */,
+				D8778E78165A835800FEEED8 /* GKLViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D8778E53165A835800FEEED8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D8778E68165A835800FEEED8 /* main.m in Sources */,
+				D8778E6C165A835800FEEED8 /* GKLAppDelegate.m in Sources */,
+				D8778E75165A835800FEEED8 /* GKLViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		D8778E64165A835800FEEED8 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D8778E65165A835800FEEED8 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		D8778E76165A835800FEEED8 /* GKLViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D8778E77165A835800FEEED8 /* en */,
+			);
+			name = GKLViewController.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		D8778E79165A835800FEEED8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		D8778E7A165A835800FEEED8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		D8778E7C165A835800FEEED8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ParallaxPictures/ParallaxPictures-Prefix.pch";
+				INFOPLIST_FILE = "ParallaxPictures/ParallaxPictures-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		D8778E7D165A835800FEEED8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ParallaxPictures/ParallaxPictures-Prefix.pch";
+				INFOPLIST_FILE = "ParallaxPictures/ParallaxPictures-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D8778E51165A835800FEEED8 /* Build configuration list for PBXProject "ParallaxPictures" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D8778E79165A835800FEEED8 /* Debug */,
+				D8778E7A165A835800FEEED8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D8778E7B165A835800FEEED8 /* Build configuration list for PBXNativeTarget "ParallaxPictures" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D8778E7C165A835800FEEED8 /* Debug */,
+				D8778E7D165A835800FEEED8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D8778E4E165A835800FEEED8 /* Project object */;
+}
