@@ -45,6 +45,7 @@ static CGFloat PageControlHeight = 20.0f;
         
         _pageControl = [[UIPageControl alloc] init];
         _pageControl.currentPage = 0;
+        [_pageControl setHidesForSinglePage:YES];
         
         [_contentScrollView addSubview:contentView];
         [_contentScrollView addSubview:_pageControl];
@@ -82,6 +83,7 @@ static CGFloat PageControlHeight = 20.0f;
         [_imageScroller addSubview:imageView];
         [_imageViews addObject:imageView];
     }
+    
     [_pageControl setNumberOfPages:[_imageViews count]];
     _imageScroller.contentSize = CGSizeMake([_imageViews count]*imageWidth, self.view.bounds.size.height);
     
