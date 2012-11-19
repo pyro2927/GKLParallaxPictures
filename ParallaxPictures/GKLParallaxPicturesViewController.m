@@ -16,6 +16,7 @@
 
 static CGFloat WindowHeight = 200.0;
 static CGFloat ImageHeight  = 400.0;
+static CGFloat PageControlHeight = 20.0f;
 
 - (id)initWithImages:(NSArray *)images andContentView:(UIView *)contentView {
     self = [super initWithNibName:nil bundle:nil];
@@ -47,7 +48,12 @@ static CGFloat ImageHeight  = 400.0;
         _contentScrollView.backgroundColor              = [UIColor clearColor];
         _contentScrollView.delegate                     = self;
         _contentScrollView.showsVerticalScrollIndicator = NO;
+        
+        _pageControl = [[UIPageControl alloc] init];
+        _pageControl.currentPage = 0;
+        
         [_contentScrollView addSubview:contentView];
+        [_contentScrollView addSubview:_pageControl];
         [_contentScrollView addSubview:_transparentScroller];
         _contentView = contentView;
         [self.view addSubview:_imageScroller];
@@ -69,7 +75,7 @@ static CGFloat ImageHeight  = 400.0;
         [_imageScroller addSubview:imageView];
         [_imageViews addObject:imageView];
     }
-    
+    [_pageControl setNumberOfPages:[_imageViews count]];
     _imageScroller.contentSize = CGSizeMake([_imageViews count]*imageWidth, self.view.bounds.size.height);
     
     _transparentScroller.contentSize = CGSizeMake([_imageViews count]*imageWidth, WindowHeight);}
@@ -132,6 +138,8 @@ static CGFloat ImageHeight  = 400.0;
     
     _imageScroller.frame        = CGRectMake(0.0, 0.0, bounds.size.width, bounds.size.height);
     _transparentScroller.frame  = CGRectMake(0.0, 0.0, bounds.size.width, WindowHeight);
+    _pageControl.frame          = CGRectMake(0.0, WindowHeight - PageControlHeight, 0.0, PageControlHeight);
+    _pageControl.numberOfPages  = [_imageViews count];
     
     _contentScrollView.frame            = bounds;
     [_contentScrollView setExclusiveTouch:NO];
@@ -140,7 +148,12 @@ static CGFloat ImageHeight  = 400.0;
     [self updateOffsets];
 }
 
-#pragma mark - Table View Delegate
+#pragma mark - Scroll View Delegate
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
+    //    update our page marker
+    [_pageControl setCurrentPage:floor(_transparentScroller.contentOffset.x/_imageScroller.frame.size.width)];
+}
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     [self updateOffsets];

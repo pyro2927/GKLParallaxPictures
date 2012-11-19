@@ -21,6 +21,7 @@
     self.viewController = paralaxViewController;
     self.window.rootViewController = self.viewController;
     [self.window makeKeyAndVisible];
+    [paralaxViewController addImages:[NSArray arrayWithObjects:[UIImage imageNamed:@"shovel"], [UIImage imageNamed:@"shovel"], nil]];
     return YES;
 }
 

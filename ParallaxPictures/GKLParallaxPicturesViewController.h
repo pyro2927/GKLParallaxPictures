@@ -14,6 +14,7 @@
     UIScrollView    *_transparentScroller;
     UIScrollView    *_contentScrollView;
     UIView          *_contentView;
+    UIPageControl   *_pageControl;
 }
 
 - (id)initWithImages:(NSArray *)images andContentView:(UIView*)contentView;
