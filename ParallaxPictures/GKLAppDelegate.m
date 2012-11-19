@@ -8,15 +8,17 @@
 
 #import "GKLAppDelegate.h"
 
-#import "GKLViewController.h"
-
 @implementation GKLAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
-    self.viewController = [[GKLViewController alloc] initWithNibName:@"GKLViewController" bundle:nil];
+    UIView *testContentView = [[[UINib nibWithNibName:@"testContentView" bundle:nil] instantiateWithOwner:nil options:nil] objectAtIndex:0];
+    GKLParallaxPicturesViewController *paralaxViewController = [[GKLParallaxPicturesViewController alloc] initWithImages:[NSArray arrayWithObjects:[UIImage imageNamed:@"shovel"], [UIImage imageNamed:@"shovel"], nil] andContentView:testContentView];
+//	paralaxViewController.parallaxHeight = 150;
+//	paralaxViewController.contentScrollView.delegate = self;
+    self.viewController = paralaxViewController;
     self.window.rootViewController = self.viewController;
     [self.window makeKeyAndVisible];
     return YES;

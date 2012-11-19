@@ -16,8 +16,10 @@
 		D8778E6E165A835800FEEED8 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = D8778E6D165A835800FEEED8 /* Default.png */; };
 		D8778E70165A835800FEEED8 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D8778E6F165A835800FEEED8 /* Default@2x.png */; };
 		D8778E72165A835800FEEED8 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D8778E71165A835800FEEED8 /* Default-568h@2x.png */; };
-		D8778E75165A835800FEEED8 /* GKLViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8778E74165A835800FEEED8 /* GKLViewController.m */; };
-		D8778E78165A835800FEEED8 /* GKLViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8778E76165A835800FEEED8 /* GKLViewController.xib */; };
+		D8778E81165A837700FEEED8 /* GKLParallaxPicturesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8778E7F165A837700FEEED8 /* GKLParallaxPicturesViewController.m */; };
+		D8778E95165A87B800FEEED8 /* shovel.png in Resources */ = {isa = PBXBuildFile; fileRef = D8778E93165A87B800FEEED8 /* shovel.png */; };
+		D8778E96165A87B800FEEED8 /* shovel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D8778E94165A87B800FEEED8 /* shovel@2x.png */; };
+		D8778E99165A87DC00FEEED8 /* testContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8778E98165A87DC00FEEED8 /* testContentView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,9 +36,11 @@
 		D8778E6D165A835800FEEED8 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		D8778E6F165A835800FEEED8 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		D8778E71165A835800FEEED8 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		D8778E73165A835800FEEED8 /* GKLViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GKLViewController.h; sourceTree = "<group>"; };
-		D8778E74165A835800FEEED8 /* GKLViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GKLViewController.m; sourceTree = "<group>"; };
-		D8778E77165A835800FEEED8 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/GKLViewController.xib; sourceTree = "<group>"; };
+		D8778E7E165A837700FEEED8 /* GKLParallaxPicturesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKLParallaxPicturesViewController.h; sourceTree = "<group>"; };
+		D8778E7F165A837700FEEED8 /* GKLParallaxPicturesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKLParallaxPicturesViewController.m; sourceTree = "<group>"; };
+		D8778E93165A87B800FEEED8 /* shovel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shovel.png; sourceTree = "<group>"; };
+		D8778E94165A87B800FEEED8 /* shovel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shovel@2x.png"; sourceTree = "<group>"; };
+		D8778E98165A87DC00FEEED8 /* testContentView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = testContentView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,12 +87,14 @@
 		D8778E61165A835800FEEED8 /* ParallaxPictures */ = {
 			isa = PBXGroup;
 			children = (
+				D8778E93165A87B800FEEED8 /* shovel.png */,
+				D8778E94165A87B800FEEED8 /* shovel@2x.png */,
 				D8778E6A165A835800FEEED8 /* GKLAppDelegate.h */,
 				D8778E6B165A835800FEEED8 /* GKLAppDelegate.m */,
-				D8778E73165A835800FEEED8 /* GKLViewController.h */,
-				D8778E74165A835800FEEED8 /* GKLViewController.m */,
-				D8778E76165A835800FEEED8 /* GKLViewController.xib */,
+				D8778E98165A87DC00FEEED8 /* testContentView.xib */,
 				D8778E62165A835800FEEED8 /* Supporting Files */,
+				D8778E7E165A837700FEEED8 /* GKLParallaxPicturesViewController.h */,
+				D8778E7F165A837700FEEED8 /* GKLParallaxPicturesViewController.m */,
 			);
 			path = ParallaxPictures;
 			sourceTree = "<group>";
@@ -163,7 +169,9 @@
 				D8778E6E165A835800FEEED8 /* Default.png in Resources */,
 				D8778E70165A835800FEEED8 /* Default@2x.png in Resources */,
 				D8778E72165A835800FEEED8 /* Default-568h@2x.png in Resources */,
-				D8778E78165A835800FEEED8 /* GKLViewController.xib in Resources */,
+				D8778E95165A87B800FEEED8 /* shovel.png in Resources */,
+				D8778E96165A87B800FEEED8 /* shovel@2x.png in Resources */,
+				D8778E99165A87DC00FEEED8 /* testContentView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -176,7 +184,7 @@
 			files = (
 				D8778E68165A835800FEEED8 /* main.m in Sources */,
 				D8778E6C165A835800FEEED8 /* GKLAppDelegate.m in Sources */,
-				D8778E75165A835800FEEED8 /* GKLViewController.m in Sources */,
+				D8778E81165A837700FEEED8 /* GKLParallaxPicturesViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -189,14 +197,6 @@
 				D8778E65165A835800FEEED8 /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		D8778E76165A835800FEEED8 /* GKLViewController.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D8778E77165A835800FEEED8 /* en */,
-			);
-			name = GKLViewController.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -292,6 +292,7 @@
 				D8778E7D165A835800FEEED8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

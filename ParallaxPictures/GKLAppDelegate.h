@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GKLParallaxPicturesViewController.h"
 
 @class GKLViewController;
 
@@ -14,6 +15,6 @@
 
 @property (strong, nonatomic) UIWindow *window;
 
-@property (strong, nonatomic) GKLViewController *viewController;
+@property (strong, nonatomic) GKLParallaxPicturesViewController *viewController;
 
 @end
