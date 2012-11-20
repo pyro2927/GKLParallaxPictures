@@ -71,20 +71,24 @@ static CGFloat PageControlHeight = 20.0f;
     }
 }
 
+-(void)loadImageFromURLString:(NSString*)urlString forImageView:(UIImageView*)imageView{
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul);
+    dispatch_async(queue, ^{
+        NSData *imageData = [[NSData alloc] initWithContentsOfURL:[NSURL URLWithString:urlString]];
+        dispatch_sync(dispatch_get_main_queue(), ^{
+            UIImage *downloadedImage = [[UIImage alloc] initWithData:imageData];
+            [imageView setImage:downloadedImage];
+        });
+    });
+}
+
 - (void)addImage:(id)image atIndex:(int)index{
     UIImageView *imageView  = [[UIImageView alloc] init];
     if ([image isKindOfClass:[UIImage class]]) {
         [imageView setImage:image];
         //                allow users to submit URLs
     } else if ([image isKindOfClass:[NSString class]]){
-        dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul);
-        dispatch_async(queue, ^{
-            NSData *imageData = [[NSData alloc] initWithContentsOfURL:[NSURL URLWithString:(NSString*)image]];
-            dispatch_sync(dispatch_get_main_queue(), ^{
-                UIImage *downloadedImage = [[UIImage alloc] initWithData:imageData];
-                [imageView setImage:downloadedImage];
-            });
-        });
+        [self loadImageFromURLString:(NSString*)image forImageView:imageView];
     }
     [imageView setContentMode:UIViewContentModeScaleAspectFill];
     [imageView setClipsToBounds:YES];
