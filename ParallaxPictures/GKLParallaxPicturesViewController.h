@@ -15,8 +15,17 @@
     UIScrollView    *_contentScrollView;
     UIView          *_contentView;
     UIPageControl   *_pageControl;
+    id parallaxDelegate;
 }
 
 - (id)initWithImages:(NSArray *)images andContentView:(UIView*)contentView;
 - (void)addImages:(NSArray*)moreImages;
+
+@property (retain) id parallaxDelegate;
+
+@end
+
+@protocol parallaxDelegate <NSObject>
+@optional
+-(void)imageTapped:(UIImage*)image;
 @end

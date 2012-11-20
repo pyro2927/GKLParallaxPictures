@@ -13,6 +13,7 @@
 @end
 
 @implementation GKLParallaxPicturesViewController
+@synthesize parallaxDelegate;
 
 static CGFloat WindowHeight = 200.0;
 static CGFloat ImageHeight  = 400.0;
@@ -27,7 +28,7 @@ static CGFloat PageControlHeight = 20.0f;
         _imageScroller.showsVerticalScrollIndicator     = NO;
         _imageScroller.pagingEnabled                    = YES;
         
-        _imageViews = [NSMutableArray arrayWithCapacity:[images count]];
+        _imageViews = [[NSMutableArray arrayWithCapacity:[images count]] retain];
         [self addImages:images];
         
         _transparentScroller = [[UIScrollView alloc] initWithFrame:CGRectZero];
@@ -43,7 +44,7 @@ static CGFloat PageControlHeight = 20.0f;
         _contentScrollView.delegate                     = self;
         _contentScrollView.showsVerticalScrollIndicator = NO;
         
-        _pageControl = [[UIPageControl alloc] init];
+        _pageControl = [[[UIPageControl alloc] init] retain];
         _pageControl.currentPage = 0;
         [_pageControl setHidesForSinglePage:YES];
         
@@ -53,8 +54,21 @@ static CGFloat PageControlHeight = 20.0f;
         _contentView = contentView;
         [self.view addSubview:_imageScroller];
         [self.view addSubview:_contentScrollView];
+        
+//        load up our delegate to see when images are tapped on
+        UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTapGesture:)];
+        tapGesture.numberOfTapsRequired = 2;
+        [_transparentScroller addGestureRecognizer:tapGesture];
     }
     return self;
+}
+
+-(void)handleTapGesture:(id)sender{
+    NSLog(@"Transparent scroller tapped");
+    if ([parallaxDelegate respondsToSelector:@selector(imageTapped:)]) {
+        int imageIndex = _transparentScroller.contentOffset.x / _imageScroller.frame.size.width;
+        [parallaxDelegate imageTapped:[(UIImageView*)[_imageViews objectAtIndex:imageIndex] image]];
+    }
 }
 
 -(void)addImages:(NSArray *)moreImages{
@@ -150,7 +164,7 @@ static CGFloat PageControlHeight = 20.0f;
     
     _imageScroller.frame        = CGRectMake(0.0, 0.0, bounds.size.width, bounds.size.height);
     _transparentScroller.frame  = CGRectMake(0.0, 0.0, bounds.size.width, WindowHeight);
-    _pageControl.frame          = CGRectMake(0.0, WindowHeight - PageControlHeight, 0.0, PageControlHeight);
+    _pageControl.frame          = CGRectMake(0.0, WindowHeight - PageControlHeight, bounds.size.width, PageControlHeight);
     _pageControl.numberOfPages  = [_imageViews count];
     
     _contentScrollView.frame            = bounds;
