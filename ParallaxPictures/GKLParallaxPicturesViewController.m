@@ -80,6 +80,7 @@ static CGFloat PageControlHeight = 20.0f;
         imageView.frame = CGRectMake(imageXOffset, imageYOffset, imageWidth, ImageHeight);
         imageXOffset   += imageWidth;
         [imageView setContentMode:UIViewContentModeScaleAspectFill];
+        [imageView setClipsToBounds:YES];
         [_imageScroller addSubview:imageView];
         [_imageViews addObject:imageView];
     }
