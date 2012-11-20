@@ -10,5 +10,28 @@ GKLParallaxPictures
 Where `contentView` is the detailed view you want below your images.  You can always add more images after the view controller is instantiated by calling:
 
 	[paralaxViewController addImages:moarImages];
+	
+### URL Image Loading
+
+GKLParallaxPictures accepts both UIImages and NSStrings (of an image URL) for adding UIImageViews into the top gallery.  By default it uses dispatch_queue to load images asynchronously, but you can subclass GKLParallaxPictures and overwrite this method to handle image loading however you choose.
+
+Default image loading:
+
+	-(void)loadImageFromURLString:(NSString*)urlString forImageView:(UIImageView*)imageView{
+    	dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul);
+    	dispatch_async(queue, ^{
+        	NSData *imageData = [[NSData alloc] initWithContentsOfURL:[NSURL URLWithString:urlString]];
+        	dispatch_sync(dispatch_get_main_queue(), ^{
+            	UIImage *downloadedImage = [[UIImage alloc] initWithData:imageData];
+            	[imageView setImage:downloadedImage];
+        	});
+    	});
+	}
+	
+Image loading with [SDWebImage](https://github.com/rs/SDWebImage):
+
+	-(void)loadImageFromURLString:(NSString*)urlString forImageView:(UIImageView*)imageView{
+    	[imageView setImageWithURL:[NSURL URLWithString:urlString]];
+	}
 
 ![](https://raw.github.com/pyro2927/GKLParallaxPictures/master/parallax.gif)
