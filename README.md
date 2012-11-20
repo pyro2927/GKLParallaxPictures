@@ -34,4 +34,8 @@ Image loading with [SDWebImage](https://github.com/rs/SDWebImage):
     	[imageView setImageWithURL:[NSURL URLWithString:urlString]];
 	}
 
+### Delegate Callbacks
+
+Currently there is only one delegate method, `imageTapped:`.  Implementing this and setting a `parallaxDelegate` will give you a callback whenever the picture gallery is double tapped by the user, along with the UIImage that was tapped.
+
 ![](https://raw.github.com/pyro2927/GKLParallaxPictures/master/parallax.gif)
