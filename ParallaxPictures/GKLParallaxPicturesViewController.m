@@ -71,11 +71,28 @@ static CGFloat PageControlHeight = 20.0f;
     }
 }
 
+- (void)addImage:(id)image atIndex:(int)index{
+    UIImageView *imageView  = [[UIImageView alloc] init];
+    if ([image isKindOfClass:[UIImage class]]) {
+        [imageView setImage:image];
+        //                allow users to submit URLs
+    } else if ([image isKindOfClass:[NSString class]]){
+        dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul);
+        dispatch_async(queue, ^{
+            NSData *imageData = [[NSData alloc] initWithContentsOfURL:[NSURL URLWithString:(NSString*)image]];
+            dispatch_sync(dispatch_get_main_queue(), ^{
+                UIImage *downloadedImage = [[UIImage alloc] initWithData:imageData];
+                [imageView setImage:downloadedImage];
+            });
+        });
+    }
+    [_imageScroller addSubview:imageView];
+    [_imageViews insertObject:imageView atIndex:index];
+    [_pageControl setNumberOfPages:_pageControl.numberOfPages + 1];
+    [self layoutImages];
+}
+
 -(void)addImages:(NSArray *)moreImages{
-    CGFloat imageWidth   = _imageScroller.frame.size.width;
-    CGFloat imageYOffset = floorf((WindowHeight  - ImageHeight) / 2.0);
-    CGFloat imageXOffset = [_imageViews count] * imageWidth;
-    
     for (id image in moreImages) {
         UIImageView *imageView  = [[UIImageView alloc] init];
         if ([image isKindOfClass:[UIImage class]]) {
@@ -91,18 +108,12 @@ static CGFloat PageControlHeight = 20.0f;
                 });
             });
         }
-        imageView.frame = CGRectMake(imageXOffset, imageYOffset, imageWidth, ImageHeight);
-        imageXOffset   += imageWidth;
         [imageView setContentMode:UIViewContentModeScaleAspectFill];
         [imageView setClipsToBounds:YES];
         [_imageScroller addSubview:imageView];
         [_imageViews addObject:imageView];
     }
-    
     [_pageControl setNumberOfPages:[_imageViews count]];
-    _imageScroller.contentSize = CGSizeMake([_imageViews count]*imageWidth, self.view.bounds.size.height);
-    
-    _transparentScroller.contentSize = CGSizeMake([_imageViews count]*imageWidth, WindowHeight);
     [self layoutImages];
 }
 
@@ -152,7 +163,7 @@ static CGFloat PageControlHeight = 20.0f;
     _imageScroller.contentOffset = CGPointMake(0.0, 0.0);
     
     _transparentScroller.contentSize = CGSizeMake([_imageViews count]*imageWidth, WindowHeight);
-    _transparentScroller.contentOffset = CGPointMake(0.0, 0.0);
+//    _transparentScroller.contentOffset = CGPointMake(0.0, 0.0);
 }
 
 #pragma mark - View lifecycle
@@ -164,14 +175,15 @@ static CGFloat PageControlHeight = 20.0f;
     
     _imageScroller.frame        = CGRectMake(0.0, 0.0, bounds.size.width, bounds.size.height);
     _transparentScroller.frame  = CGRectMake(0.0, 0.0, bounds.size.width, WindowHeight);
-    _pageControl.frame          = CGRectMake(0.0, WindowHeight - PageControlHeight, bounds.size.width, PageControlHeight);
-    _pageControl.numberOfPages  = [_imageViews count];
+    
     
     _contentScrollView.frame            = bounds;
     [_contentScrollView setExclusiveTouch:NO];
     [self layoutImages];
     [self layoutContent];
     [self updateOffsets];
+    _pageControl.frame          = CGRectMake(0.0, WindowHeight - PageControlHeight, bounds.size.width, PageControlHeight);
+    _pageControl.numberOfPages  = [_imageViews count];
 }
 
 #pragma mark - Scroll View Delegate

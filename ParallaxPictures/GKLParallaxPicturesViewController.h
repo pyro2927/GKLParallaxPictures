@@ -20,6 +20,7 @@
 
 - (id)initWithImages:(NSArray *)images andContentView:(UIView*)contentView;
 - (void)addImages:(NSArray*)moreImages;
+- (void)addImage:(id)image atIndex:(int)index;
 
 @property (retain) id parallaxDelegate;
 
