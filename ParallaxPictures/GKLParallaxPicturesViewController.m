@@ -86,6 +86,8 @@ static CGFloat PageControlHeight = 20.0f;
             });
         });
     }
+    [imageView setContentMode:UIViewContentModeScaleAspectFill];
+    [imageView setClipsToBounds:YES];
     [_imageScroller addSubview:imageView];
     [_imageViews insertObject:imageView atIndex:index];
     [_pageControl setNumberOfPages:_pageControl.numberOfPages + 1];
@@ -94,24 +96,7 @@ static CGFloat PageControlHeight = 20.0f;
 
 -(void)addImages:(NSArray *)moreImages{
     for (id image in moreImages) {
-        UIImageView *imageView  = [[UIImageView alloc] init];
-        if ([image isKindOfClass:[UIImage class]]) {
-            [imageView setImage:image];
-            //                allow users to submit URLs
-        } else if ([image isKindOfClass:[NSString class]]){
-            dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul);
-            dispatch_async(queue, ^{
-                NSData *imageData = [[NSData alloc] initWithContentsOfURL:[NSURL URLWithString:(NSString*)image]];
-                dispatch_sync(dispatch_get_main_queue(), ^{
-                    UIImage *downloadedImage = [[UIImage alloc] initWithData:imageData];
-                    [imageView setImage:downloadedImage];
-                });
-            });
-        }
-        [imageView setContentMode:UIViewContentModeScaleAspectFill];
-        [imageView setClipsToBounds:YES];
-        [_imageScroller addSubview:imageView];
-        [_imageViews addObject:imageView];
+        [self addImage:image atIndex:[_imageViews count]];
     }
     [_pageControl setNumberOfPages:[_imageViews count]];
     [self layoutImages];
