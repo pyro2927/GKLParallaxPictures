@@ -28,7 +28,7 @@ static CGFloat PageControlHeight = 20.0f;
         _imageScroller.showsVerticalScrollIndicator     = NO;
         _imageScroller.pagingEnabled                    = YES;
         
-        _imageViews = [[NSMutableArray arrayWithCapacity:[images count]] retain];
+        _imageViews = [NSMutableArray arrayWithCapacity:[images count]];
         [self addImages:images];
         
         _transparentScroller = [[UIScrollView alloc] initWithFrame:CGRectZero];
@@ -44,7 +44,7 @@ static CGFloat PageControlHeight = 20.0f;
         _contentScrollView.delegate                     = self;
         _contentScrollView.showsVerticalScrollIndicator = NO;
         
-        _pageControl = [[[UIPageControl alloc] init] retain];
+        _pageControl = [[UIPageControl alloc] init];
         _pageControl.currentPage = 0;
         [_pageControl setHidesForSinglePage:YES];
         
