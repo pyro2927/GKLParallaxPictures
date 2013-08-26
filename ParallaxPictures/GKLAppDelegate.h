@@ -7,14 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "GKLParallaxPicturesViewController.h"
 
-@class GKLViewController;
+@class GKLParallaxPicturesViewController;
 
 @interface GKLAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-
 @property (strong, nonatomic) GKLParallaxPicturesViewController *viewController;
 
 @end
