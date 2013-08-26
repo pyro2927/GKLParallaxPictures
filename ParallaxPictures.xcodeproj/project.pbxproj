@@ -36,8 +36,8 @@
 		D8778E6D165A835800FEEED8 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		D8778E6F165A835800FEEED8 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		D8778E71165A835800FEEED8 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		D8778E7E165A837700FEEED8 /* GKLParallaxPicturesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKLParallaxPicturesViewController.h; sourceTree = "<group>"; };
-		D8778E7F165A837700FEEED8 /* GKLParallaxPicturesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKLParallaxPicturesViewController.m; sourceTree = "<group>"; };
+		D8778E7E165A837700FEEED8 /* GKLParallaxPicturesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GKLParallaxPicturesViewController.h; path = ParallaxPictures/GKLParallaxPicturesViewController.h; sourceTree = "<group>"; };
+		D8778E7F165A837700FEEED8 /* GKLParallaxPicturesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GKLParallaxPicturesViewController.m; path = ParallaxPictures/GKLParallaxPicturesViewController.m; sourceTree = "<group>"; };
 		D8778E93165A87B800FEEED8 /* shovel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shovel.png; sourceTree = "<group>"; };
 		D8778E94165A87B800FEEED8 /* shovel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shovel@2x.png"; sourceTree = "<group>"; };
 		D8778E98165A87DC00FEEED8 /* testContentView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = testContentView.xib; sourceTree = "<group>"; };
@@ -60,7 +60,9 @@
 		D8778E4C165A835800FEEED8 = {
 			isa = PBXGroup;
 			children = (
-				D8778E61165A835800FEEED8 /* ParallaxPictures */,
+				D8778E7E165A837700FEEED8 /* GKLParallaxPicturesViewController.h */,
+				D8778E7F165A837700FEEED8 /* GKLParallaxPicturesViewController.m */,
+				D8778E61165A835800FEEED8 /* Example Project */,
 				D8778E5A165A835800FEEED8 /* Frameworks */,
 				D8778E58165A835800FEEED8 /* Products */,
 			);
@@ -84,7 +86,7 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		D8778E61165A835800FEEED8 /* ParallaxPictures */ = {
+		D8778E61165A835800FEEED8 /* Example Project */ = {
 			isa = PBXGroup;
 			children = (
 				D8778E93165A87B800FEEED8 /* shovel.png */,
@@ -93,9 +95,8 @@
 				D8778E6B165A835800FEEED8 /* GKLAppDelegate.m */,
 				D8778E98165A87DC00FEEED8 /* testContentView.xib */,
 				D8778E62165A835800FEEED8 /* Supporting Files */,
-				D8778E7E165A837700FEEED8 /* GKLParallaxPicturesViewController.h */,
-				D8778E7F165A837700FEEED8 /* GKLParallaxPicturesViewController.m */,
 			);
+			name = "Example Project";
 			path = ParallaxPictures;
 			sourceTree = "<group>";
 		};
