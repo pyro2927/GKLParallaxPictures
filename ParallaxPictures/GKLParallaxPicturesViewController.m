@@ -29,7 +29,7 @@
 @implementation GKLParallaxPicturesViewController
 
 static CGFloat WindowHeight = 200.0;
-static CGFloat ImageHeight  = 400.0;
+static CGFloat ImageHeight  = 300;
 static CGFloat PageControlHeight = 20.0f;
 
 - (id)initWithImages:(NSArray *)images andContentView:(UIView *)contentView {
@@ -126,11 +126,16 @@ static CGFloat PageControlHeight = 20.0f;
     CGFloat xOffset   = _transparentScroller.contentOffset.x;
     CGFloat threshold = ImageHeight - WindowHeight;
     
-    if (yOffset > -threshold && yOffset < 0) {
+    NSLog(@"%f, %f", yOffset, threshold);
+    
+    if (yOffset > -threshold && yOffset < 0) { // user scrolled down the image until showing the background
+        // move the imageScroller down faster
         _imageScroller.contentOffset = CGPointMake(xOffset, floorf(yOffset / 2.0));
-    } else if (yOffset < 0) {
+    } else if (yOffset < 0) { // user scrolled down the image
+        // move the imageScroller down
         _imageScroller.contentOffset = CGPointMake(xOffset, yOffset + floorf(threshold / 2.0));
-    } else {
+    } else { // user scrolled up
+        // move imageScroller up slowly
         _imageScroller.contentOffset = CGPointMake(xOffset, floorf(yOffset / 2.0));
     }
 }
