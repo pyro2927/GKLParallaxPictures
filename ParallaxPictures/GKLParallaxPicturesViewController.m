@@ -8,12 +8,25 @@
 
 #import "GKLParallaxPicturesViewController.h"
 
-@interface GKLParallaxPicturesViewController ()
+@interface GKLParallaxPicturesViewController () <UIScrollViewDelegate>
+
+//NSMutableArray  *_imageViews;
+//UIScrollView    *_imageScroller;
+//UIScrollView    *_transparentScroller;
+//UIScrollView    *_contentScrollView;
+//UIView          *_contentView;
+//UIPageControl   *_pageControl;
+
+@property (nonatomic, strong) NSMutableArray *imageViews;
+@property (nonatomic, strong) UIScrollView *imageScroller;
+@property (nonatomic, strong) UIScrollView *transparentScroller;
+@property (nonatomic, strong) UIScrollView *contentScrollView;
+@property (nonatomic, strong) UIView *contentView;
+@property (nonatomic, strong) UIPageControl *pageControl;
 
 @end
 
 @implementation GKLParallaxPicturesViewController
-@synthesize parallaxDelegate;
 
 static CGFloat WindowHeight = 200.0;
 static CGFloat ImageHeight  = 400.0;
@@ -55,7 +68,7 @@ static CGFloat PageControlHeight = 20.0f;
         [self.view addSubview:_imageScroller];
         [self.view addSubview:_contentScrollView];
         
-//        load up our delegate to see when images are tapped on
+        // load up our delegate to see when images are tapped on
         UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTapGesture:)];
         tapGesture.numberOfTapsRequired = 2;
         [_transparentScroller addGestureRecognizer:tapGesture];
@@ -64,10 +77,10 @@ static CGFloat PageControlHeight = 20.0f;
 }
 
 -(void)handleTapGesture:(id)sender{
-    NSLog(@"Transparent scroller tapped");
-    if ([parallaxDelegate respondsToSelector:@selector(imageTapped:)]) {
-        int imageIndex = _transparentScroller.contentOffset.x / _imageScroller.frame.size.width;
-        [parallaxDelegate imageTapped:[(UIImageView*)[_imageViews objectAtIndex:imageIndex] image]];
+    if ([self.parallaxDelegate respondsToSelector:@selector(GKLPPController:tappedImage:atIndex:)]) {
+        NSUInteger imageIndex = self.transparentScroller.contentOffset.x / self.imageScroller.frame.size.width;
+        UIImage *image = [[self.imageViews objectAtIndex:imageIndex] image];
+        [self.parallaxDelegate GKLPPController:self tappedImage:image atIndex:imageIndex];
     }
 }
 

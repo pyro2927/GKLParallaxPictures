@@ -8,25 +8,21 @@
 
 #import <UIKit/UIKit.h>
 
-@interface GKLParallaxPicturesViewController : UIViewController<UIScrollViewDelegate> {
-    NSMutableArray  *_imageViews;
-    UIScrollView    *_imageScroller;
-    UIScrollView    *_transparentScroller;
-    UIScrollView    *_contentScrollView;
-    UIView          *_contentView;
-    UIPageControl   *_pageControl;
-    id parallaxDelegate;
-}
+@class GKLParallaxPicturesViewController;
+
+@protocol parallaxDelegate <NSObject>
+
+@optional
+- (void)GKLPPController:(GKLParallaxPicturesViewController *)controller tappedImage:(UIImage *)img atIndex:(NSUInteger)index;
+
+@end
+
+@interface GKLParallaxPicturesViewController : UIViewController
 
 - (id)initWithImages:(NSArray *)images andContentView:(UIView*)contentView;
 - (void)addImages:(NSArray*)moreImages;
 - (void)addImage:(id)image atIndex:(int)index;
 
-@property (retain) id parallaxDelegate;
+@property (weak, nonatomic) id<parallaxDelegate> parallaxDelegate;
 
-@end
-
-@protocol parallaxDelegate <NSObject>
-@optional
--(void)imageTapped:(UIImage*)image;
 @end
