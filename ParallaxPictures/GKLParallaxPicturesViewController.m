@@ -77,10 +77,10 @@ static CGFloat PageControlHeight = 20.0f;
 }
 
 -(void)handleTapGesture:(id)sender{
-    if ([self.parallaxDelegate respondsToSelector:@selector(GKLPPController:tappedImage:atIndex:)]) {
+    if ([self.delegate respondsToSelector:@selector(GKLPPController:tappedImage:atIndex:)]) {
         NSUInteger imageIndex = self.transparentScroller.contentOffset.x / self.imageScroller.frame.size.width;
         UIImage *image = [[self.imageViews objectAtIndex:imageIndex] image];
-        [self.parallaxDelegate GKLPPController:self tappedImage:image atIndex:imageIndex];
+        [self.delegate GKLPPController:self tappedImage:image atIndex:imageIndex];
     }
 }
 

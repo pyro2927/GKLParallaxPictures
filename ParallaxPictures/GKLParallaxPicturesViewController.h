@@ -10,7 +10,7 @@
 
 @class GKLParallaxPicturesViewController;
 
-@protocol parallaxDelegate <NSObject>
+@protocol GKLPPViewControllerDelegate <NSObject>
 
 @optional
 - (void)GKLPPController:(GKLParallaxPicturesViewController *)controller tappedImage:(UIImage *)img atIndex:(NSUInteger)index;
@@ -23,6 +23,6 @@
 - (void)addImages:(NSArray*)moreImages;
 - (void)addImage:(id)image atIndex:(int)index;
 
-@property (weak, nonatomic) id<parallaxDelegate> parallaxDelegate;
+@property (weak, nonatomic) id<GKLPPViewControllerDelegate> delegate;
 
 @end
