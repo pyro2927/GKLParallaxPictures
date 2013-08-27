@@ -5,6 +5,19 @@ This component allows you to display an image gallery on top of a simple `UIView
 
 ![](https://raw.github.com/frankdilo/GKLParallaxPictures/master/screenshot1.gif)
 
+### Install
+
+The easiest way to install this component is via [CocoaPods](http://cocoapods.org/).
+
+Add the following line to your `podfile`:
+
+    pod 'GKLParallaxPictures'
+
+Then run the `pod install` command and import `GKLParallaxPicturesViewController.h` where you plan to use this.
+
+You can also install it manually. Just drag `GKLParallaxPicturesViewController.h` and `GKLParallaxPicturesViewController.m` in your project and import the `.h` file where you want to use this component.
+
+
 ### How To Use
 
 	GKLParallaxPicturesViewController *paralaxViewController = [[GKLParallaxPicturesViewController alloc] initWithImages:imagesArray andContentView:contentView];
