@@ -3,7 +3,7 @@
 
 This component allows you to display an image gallery on top of a simple `UIView` or `UIWebView`. Scroll and you will see a nice parallax effect.
 
-![](https://raw.github.com/pyro2927/GKLParallaxPictures/master/screenshot1.gif)
+![](https://raw.github.com/frankdilo/GKLParallaxPictures/master/screenshot1.gif)
 
 ### How To Use
 
@@ -32,7 +32,7 @@ This is the reason I forked for. It was not possible to display an `UIWebView` a
 
 Result:
 
-![](https://raw.github.com/pyro2927/GKLParallaxPictures/master/screenshot2.png)
+![](https://raw.github.com/frankdilo/GKLParallaxPictures/master/screenshot2.png)
 
 
 ### URL Image Loading
