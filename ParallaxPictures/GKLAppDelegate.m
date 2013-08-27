@@ -19,13 +19,16 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 
-    UIView *testContentView = [[[UINib nibWithNibName:@"testContentView" bundle:nil] instantiateWithOwner:nil options:nil] objectAtIndex:0];
+    //UIView *testContentView = [[[UINib nibWithNibName:@"testContentView" bundle:nil] instantiateWithOwner:nil options:nil] objectAtIndex:0];
+    UIWebView *testWebView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, 320, 400)];
+    
+    [testWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://nshipster.com/"]]];
     
     UIImage *testImage = [UIImage imageNamed:@"shovel"];
     NSArray *images = @[testImage, testImage, testImage];
     
     GKLParallaxPicturesViewController *paralaxViewController = [[GKLParallaxPicturesViewController alloc] initWithImages:images
-                                                                                                          andContentView:testContentView];
+                                                                                                          andContentWebView:testWebView];
     // optional delegate
     paralaxViewController.delegate = self;
     

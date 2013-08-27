@@ -14,12 +14,13 @@
 
 @optional
 - (void)GKLPPController:(GKLParallaxPicturesViewController *)controller tappedImage:(UIImage *)img atIndex:(NSUInteger)index;
-
 @end
 
 @interface GKLParallaxPicturesViewController : UIViewController
 
 - (id)initWithImages:(NSArray *)images andContentView:(UIView*)contentView;
+- (id)initWithImages:(NSArray *)images andContentWebView:(UIWebView *)webView;
+
 - (void)addImages:(NSArray*)moreImages;
 - (void)addImage:(id)image atIndex:(int)index;
 
