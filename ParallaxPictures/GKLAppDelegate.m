@@ -20,8 +20,7 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 
     //UIView *testContentView = [[[UINib nibWithNibName:@"testContentView" bundle:nil] instantiateWithOwner:nil options:nil] objectAtIndex:0];
-    UIWebView *testWebView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, 320, 400)];
-    
+    UIWebView *testWebView = [[UIWebView alloc] init];
     [testWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://nshipster.com/"]]];
     
     UIImage *testImage = [UIImage imageNamed:@"shovel"];
