@@ -75,6 +75,11 @@ static CGFloat PageControlHeight = 20.0f;
         _contentScrollView.delegate                     = self;
         _contentScrollView.showsVerticalScrollIndicator = YES;
         
+        // scroll to top handling
+        _contentScrollView.scrollsToTop = YES;
+        _transparentScroller.scrollsToTop = NO;
+        _imageScroller.scrollsToTop = NO;
+        
         _pageControl = [[UIPageControl alloc] init];
         _pageControl.currentPage = 0;
         [_pageControl setHidesForSinglePage:YES];
