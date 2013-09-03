@@ -8,20 +8,44 @@
 
 #import "GKLParallaxPicturesViewController.h"
 
-@interface GKLParallaxPicturesViewController ()
+@interface GKLParallaxPicturesViewController () <UIScrollViewDelegate>
+
+//NSMutableArray  *_imageViews;
+//UIScrollView    *_imageScroller;
+//UIScrollView    *_transparentScroller;
+//UIScrollView    *_contentScrollView;
+//UIView          *_contentView;
+//UIPageControl   *_pageControl;
+
+@property (nonatomic, strong) NSMutableArray *imageViews;
+@property (nonatomic, strong) UIScrollView *imageScroller;
+@property (nonatomic, strong) UIScrollView *transparentScroller;
+@property (nonatomic, strong) UIScrollView *contentScrollView;
+@property (nonatomic, strong) UIView *contentView;
+@property (nonatomic, strong) UIPageControl *pageControl;
+
+@property (nonatomic, strong) UIWebView *webView;
 
 @end
 
 @implementation GKLParallaxPicturesViewController
-@synthesize parallaxDelegate;
 
 static CGFloat WindowHeight = 200.0;
-static CGFloat ImageHeight  = 400.0;
+static CGFloat ImageHeight  = 200;
 static CGFloat PageControlHeight = 20.0f;
 
-- (id)initWithImages:(NSArray *)images andContentView:(UIView *)contentView {
+- (id)initWithImages:(NSArray *)images andcontentObject:(id)content {
     self = [super initWithNibName:nil bundle:nil];
+    
     if (self) {
+        
+        BOOL contentIsWebView = [content isKindOfClass:[UIWebView class]];
+        BOOL contentIsScrollView = [content isKindOfClass:[UIScrollView class]];
+        
+        if (contentIsWebView) {
+            _webView = content;
+        }
+        
         _imageScroller  = [[UIScrollView alloc] initWithFrame:CGRectZero];
         _imageScroller.backgroundColor                  = [UIColor clearColor];
         _imageScroller.showsHorizontalScrollIndicator   = NO;
@@ -36,39 +60,64 @@ static CGFloat PageControlHeight = 20.0f;
         _transparentScroller.delegate                       = self;
         _transparentScroller.bounces                        = NO;
         _transparentScroller.pagingEnabled                  = YES;
-        _transparentScroller.showsVerticalScrollIndicator   = YES;
+        _transparentScroller.showsVerticalScrollIndicator   = NO;
         _transparentScroller.showsHorizontalScrollIndicator = NO;
         
-        _contentScrollView = [[UIScrollView alloc] init];
+        if (contentIsWebView) {
+            _contentScrollView = _webView.scrollView;
+        } else if (contentIsScrollView) {
+            _contentScrollView = content;
+        } else {
+            _contentScrollView = [[UIScrollView alloc] init];
+        }
+        
         _contentScrollView.backgroundColor              = [UIColor clearColor];
         _contentScrollView.delegate                     = self;
-        _contentScrollView.showsVerticalScrollIndicator = NO;
+        _contentScrollView.showsVerticalScrollIndicator = YES;
+        
+        // scroll to top handling
+        _contentScrollView.scrollsToTop = YES;
+        _transparentScroller.scrollsToTop = NO;
+        _imageScroller.scrollsToTop = NO;
         
         _pageControl = [[UIPageControl alloc] init];
         _pageControl.currentPage = 0;
         [_pageControl setHidesForSinglePage:YES];
         
-        [_contentScrollView addSubview:contentView];
+        if (!contentIsWebView && !contentIsScrollView) {
+            _contentView = content;
+            [_contentScrollView addSubview:_contentView];
+        }
+        
         [_contentScrollView addSubview:_pageControl];
-        [_contentScrollView addSubview:_transparentScroller];
-        _contentView = contentView;
         [self.view addSubview:_imageScroller];
         [self.view addSubview:_contentScrollView];
+        [self.view addSubview:_transparentScroller];
         
-//        load up our delegate to see when images are tapped on
+        // load up our delegate to see when images are tapped on
         UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTapGesture:)];
         tapGesture.numberOfTapsRequired = 2;
         [_transparentScroller addGestureRecognizer:tapGesture];
     }
     return self;
+
+}
+
+- (id)initWithImages:(NSArray *)images andContentView:(UIView *)contentView {
+    return [self initWithImages:images andcontentObject:contentView];	
+}
+
+- (id)initWithImages:(NSArray *)images andContentWebView:(UIWebView *)webView {
+    return [self initWithImages:images andcontentObject:webView];
 }
 
 -(void)handleTapGesture:(id)sender{
-    NSLog(@"Transparent scroller tapped");
-    if ([parallaxDelegate respondsToSelector:@selector(imageTapped:)]) {
-        int imageIndex = _transparentScroller.contentOffset.x / _imageScroller.frame.size.width;
-        [parallaxDelegate imageTapped:[(UIImageView*)[_imageViews objectAtIndex:imageIndex] image]];
+    if ([self.delegate respondsToSelector:@selector(GKLPPController:tappedImage:atIndex:)]) {
+        NSUInteger imageIndex = self.transparentScroller.contentOffset.x / self.imageScroller.frame.size.width;
+        UIImage *image = [[self.imageViews objectAtIndex:imageIndex] image];
+        [self.delegate GKLPPController:self tappedImage:image atIndex:imageIndex];
     }
+    
 }
 
 -(void)loadImageFromURLString:(NSString*)urlString forImageView:(UIImageView*)imageView{
@@ -106,41 +155,84 @@ static CGFloat PageControlHeight = 20.0f;
     [self layoutImages];
 }
 
+#pragma mark - Utility
+
+- (BOOL)contentViewIsScrollView {
+    return (self.webView || !self.contentView);
+}
+
 #pragma mark - Parallax effect
 
 - (void)updateOffsets {
     CGFloat yOffset   = _contentScrollView.contentOffset.y;
+    
+    if ([self contentViewIsScrollView]) {
+        yOffset += WindowHeight; // compensate for the contentInset.y on self.contentScrollView
+    }
+    
     CGFloat xOffset   = _transparentScroller.contentOffset.x;
     CGFloat threshold = ImageHeight - WindowHeight;
     
-    if (yOffset > -threshold && yOffset < 0) {
-        _imageScroller.contentOffset = CGPointMake(xOffset, floorf(yOffset / 2.0));
-    } else if (yOffset < 0) {
-        _imageScroller.contentOffset = CGPointMake(xOffset, yOffset + floorf(threshold / 2.0));
-    } else {
-        _imageScroller.contentOffset = CGPointMake(xOffset, floorf(yOffset / 2.0));
+    CGFloat yscroll = 0;
+    
+    if (yOffset > -threshold && yOffset < 0) { // user scrolled up to the image until showing the background
+        // move the imageScroller down faster
+        yscroll = floorf(yOffset / 2.0);
+        _imageScroller.contentOffset = CGPointMake(xOffset, yscroll);
+    } else if (yOffset < 0) { // user scrolled up to the image
+        // move the imageScroller down
+        yscroll = yOffset + floorf(threshold / 2.0);
+        _imageScroller.contentOffset = CGPointMake(xOffset, yscroll);
+    } else { // user scrolled down
+        // move imageScroller up slowly
+        yscroll = floorf(yOffset / 2.0);
+        _imageScroller.contentOffset = CGPointMake(xOffset, yscroll);
     }
+    
+    CGFloat transpScrHeigth;
+    transpScrHeigth = WindowHeight - abs(yOffset);
+    
+    CGRect transpScrFrame = self.transparentScroller.frame;
+    
+    if (transpScrHeigth > 0) {
+        transpScrFrame.size.height = transpScrHeigth;
+    } else {
+        transpScrFrame.size.height = 0;
+    }
+    
+    self.transparentScroller.frame = transpScrFrame;
 }
-
 - (void)layoutContent
 {
-    _contentScrollView.frame = self.view.bounds;
-	
-	CGFloat yOffset = WindowHeight;
-	CGFloat xOffset = 0.0;
-	
-	CGSize contentSize = _contentView.frame.size;
-	contentSize.height += yOffset;
-    
-	_contentView.frame				= (CGRect){.origin = CGPointMake(xOffset, yOffset), .size = _contentView.frame.size};
-	_contentScrollView.contentSize	= contentSize;
+    if (self.contentView) {
+        _contentScrollView.frame = self.view.bounds;
+        
+        CGFloat yOffset = WindowHeight;
+        CGFloat xOffset = 0.0;
+        
+        CGSize contentSize = _contentView.frame.size;
+        contentSize.height += yOffset;
+        
+        _contentView.frame				= (CGRect){.origin = CGPointMake(xOffset, yOffset), .size = _contentView.frame.size};
+        _contentScrollView.contentSize	= contentSize;
+    } else if (self.webView) {
+        self.webView.frame = self.view.bounds;
+        self.webView.scrollView.contentInset = UIEdgeInsetsMake(WindowHeight, 0, 0, 0);
+    }
 }
 
 #pragma mark - View Layout
 
 - (void)layoutImages {
     CGFloat imageWidth   = _imageScroller.frame.size.width;
-    CGFloat imageYOffset = floorf((WindowHeight  - ImageHeight) / 2.0);
+    
+    CGFloat imageYOffset;
+    if ([self contentViewIsScrollView]) {
+        imageYOffset = 0;
+    } else {
+        imageYOffset = floorf((WindowHeight  - ImageHeight) / 2.0);
+    }
+    
     CGFloat imageXOffset = 0.0;
     
     for (UIImageView *imageView in _imageViews) {
@@ -166,12 +258,21 @@ static CGFloat PageControlHeight = 20.0f;
     _transparentScroller.frame  = CGRectMake(0.0, 0.0, bounds.size.width, WindowHeight);
     
     
-    _contentScrollView.frame            = bounds;
+    if (self.contentView) {
+        _contentScrollView.frame = bounds;
+    }
+    
     [_contentScrollView setExclusiveTouch:NO];
     [self layoutImages];
     [self layoutContent];
     [self updateOffsets];
-    _pageControl.frame          = CGRectMake(0.0, WindowHeight - PageControlHeight, bounds.size.width, PageControlHeight);
+    
+    CGFloat pageControlY = WindowHeight - PageControlHeight;
+    if (self.webView) {
+        pageControlY = -PageControlHeight;
+    }
+    
+    _pageControl.frame          = CGRectMake(0.0, pageControlY, bounds.size.width, PageControlHeight);
     _pageControl.numberOfPages  = [_imageViews count];
 }
 
