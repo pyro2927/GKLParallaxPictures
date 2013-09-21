@@ -1,9 +1,8 @@
-*Originally created by [pyro2927](https://github.com/pyro2927). This is my take on the project.*
 ## GKLParallaxPictures
 
 This component allows you to display an image gallery on top of a simple `UIView` or `UIWebView`. Scroll and you will see a nice parallax effect.
 
-![](https://raw.github.com/frankdilo/GKLParallaxPictures/master/screenshot1.gif)
+![](https://raw.github.com/pyro2927/GKLParallaxPictures/master/screenshot1.gif)
 
 ### Install
 
