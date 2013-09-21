@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		019F2A0E17CCC3070026DAB8 /* GKLParallaxPicturesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 019F2A0D17CCC3070026DAB8 /* GKLParallaxPicturesViewController.m */; };
 		D8778E5C165A835800FEEED8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8778E5B165A835800FEEED8 /* UIKit.framework */; };
 		D8778E5E165A835800FEEED8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8778E5D165A835800FEEED8 /* Foundation.framework */; };
 		D8778E60165A835800FEEED8 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8778E5F165A835800FEEED8 /* CoreGraphics.framework */; };
@@ -16,13 +17,14 @@
 		D8778E6E165A835800FEEED8 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = D8778E6D165A835800FEEED8 /* Default.png */; };
 		D8778E70165A835800FEEED8 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D8778E6F165A835800FEEED8 /* Default@2x.png */; };
 		D8778E72165A835800FEEED8 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D8778E71165A835800FEEED8 /* Default-568h@2x.png */; };
-		D8778E81165A837700FEEED8 /* GKLParallaxPicturesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8778E7F165A837700FEEED8 /* GKLParallaxPicturesViewController.m */; };
 		D8778E95165A87B800FEEED8 /* shovel.png in Resources */ = {isa = PBXBuildFile; fileRef = D8778E93165A87B800FEEED8 /* shovel.png */; };
 		D8778E96165A87B800FEEED8 /* shovel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D8778E94165A87B800FEEED8 /* shovel@2x.png */; };
 		D8778E99165A87DC00FEEED8 /* testContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8778E98165A87DC00FEEED8 /* testContentView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		019F2A0C17CCC3070026DAB8 /* GKLParallaxPicturesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKLParallaxPicturesViewController.h; sourceTree = "<group>"; };
+		019F2A0D17CCC3070026DAB8 /* GKLParallaxPicturesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKLParallaxPicturesViewController.m; sourceTree = "<group>"; };
 		D8778E57165A835800FEEED8 /* ParallaxPictures.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ParallaxPictures.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8778E5B165A835800FEEED8 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		D8778E5D165A835800FEEED8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -36,8 +38,6 @@
 		D8778E6D165A835800FEEED8 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		D8778E6F165A835800FEEED8 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		D8778E71165A835800FEEED8 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		D8778E7E165A837700FEEED8 /* GKLParallaxPicturesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKLParallaxPicturesViewController.h; sourceTree = "<group>"; };
-		D8778E7F165A837700FEEED8 /* GKLParallaxPicturesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKLParallaxPicturesViewController.m; sourceTree = "<group>"; };
 		D8778E93165A87B800FEEED8 /* shovel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shovel.png; sourceTree = "<group>"; };
 		D8778E94165A87B800FEEED8 /* shovel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shovel@2x.png"; sourceTree = "<group>"; };
 		D8778E98165A87DC00FEEED8 /* testContentView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = testContentView.xib; sourceTree = "<group>"; };
@@ -57,10 +57,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		019F2A0B17CCC3070026DAB8 /* GKLParallaxPicturesViewController */ = {
+			isa = PBXGroup;
+			children = (
+				019F2A0C17CCC3070026DAB8 /* GKLParallaxPicturesViewController.h */,
+				019F2A0D17CCC3070026DAB8 /* GKLParallaxPicturesViewController.m */,
+			);
+			path = GKLParallaxPicturesViewController;
+			sourceTree = "<group>";
+		};
 		D8778E4C165A835800FEEED8 = {
 			isa = PBXGroup;
 			children = (
-				D8778E61165A835800FEEED8 /* ParallaxPictures */,
+				019F2A0B17CCC3070026DAB8 /* GKLParallaxPicturesViewController */,
+				D8778E61165A835800FEEED8 /* Example Project */,
 				D8778E5A165A835800FEEED8 /* Frameworks */,
 				D8778E58165A835800FEEED8 /* Products */,
 			);
@@ -84,7 +94,7 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		D8778E61165A835800FEEED8 /* ParallaxPictures */ = {
+		D8778E61165A835800FEEED8 /* Example Project */ = {
 			isa = PBXGroup;
 			children = (
 				D8778E93165A87B800FEEED8 /* shovel.png */,
@@ -93,9 +103,8 @@
 				D8778E6B165A835800FEEED8 /* GKLAppDelegate.m */,
 				D8778E98165A87DC00FEEED8 /* testContentView.xib */,
 				D8778E62165A835800FEEED8 /* Supporting Files */,
-				D8778E7E165A837700FEEED8 /* GKLParallaxPicturesViewController.h */,
-				D8778E7F165A837700FEEED8 /* GKLParallaxPicturesViewController.m */,
 			);
+			name = "Example Project";
 			path = ParallaxPictures;
 			sourceTree = "<group>";
 		};
@@ -184,7 +193,7 @@
 			files = (
 				D8778E68165A835800FEEED8 /* main.m in Sources */,
 				D8778E6C165A835800FEEED8 /* GKLAppDelegate.m in Sources */,
-				D8778E81165A837700FEEED8 /* GKLParallaxPicturesViewController.m in Sources */,
+				019F2A0E17CCC3070026DAB8 /* GKLParallaxPicturesViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
